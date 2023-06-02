@@ -158,10 +158,12 @@ if __name__ == '__main__':
 
     while True:
         now = datetime.now()
-        tgrm_f_str = "OAS" + now.strftime("%y%m%d%u%H%M%S") + "\r"
+        # tgrm_f_str = "OAS" + now.strftime("%y%m%d%u%H%M%S") + "\r"
         # tgrm_f_str = "OAL " + now.strftime("%y %m %d %u %H %M %S") + "\r"
         # print("telegram", tgrm_f_str)
+        tgrm_f_str = "OAS" + now.strftime("%y%m%d%u%H%M%S") + "\r"
         str_1_encoded = tgrm_f_str.encode(encoding='ascii')
+
 
         print("telegram: ", tgrm_f_str)
 
@@ -172,21 +174,21 @@ if __name__ == '__main__':
         SerCon.write(str_1_encoded)
         # time.sleep(1)
         # while True:
-        try:
-            print("Attempt to Read")
-            readOut = SerCon.readline().decode('ascii')
+        #try:
+        #    print("Attempt to Read")
+        #    readOut = SerCon.readline().decode('ascii')
             # time.sleep(1)
-            print("Reading: ", readOut)
-            break
-        except:
-            pass
-        print("Restart")
-        SerCon.flush()
+        #    print("Reading: ", readOut)
+        #    break
+        #except:
+        #    pass
+        #print("Restart")
+        #SerCon.flush()
 
         # x = ser.read()  # read one byte
         # s = ser.read(10)  # read up to ten bytes (timeout)
 
-        time.sleep(1)
+        time.sleep(5*60)
 
     if SerCon.is_open:
         SerCon.close()
